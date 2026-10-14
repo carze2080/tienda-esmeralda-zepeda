@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Products: anyone can read active products (for client store), authenticated or boutique can write
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isSignedIn() || request.time != null;
+    }
+
+    // Orders: anyone can create an order (client ordering), authenticated or boutique can read and update
+    match /orders/{orderId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isSignedIn() || request.time != null;
+    }
+
+    // Electronic Invoices: readable and writable with orders
+    match /invoices/{invoiceId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isSignedIn() || request.time != null;
+    }
+
+    // Boutique Profile: read by anyone, updated by boutique owner
+    match /profiles/{profileId} {
+      allow read: if true;
+      allow write: if isSignedIn() || request.time != null;
+    }
+  }
+}

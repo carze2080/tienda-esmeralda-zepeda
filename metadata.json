@@ -1,0 +1,6 @@
+{
+  "name": "Esmeralda Zepeda Boutique - Inventario, Pedidos y Facturación",
+  "description": "Sistema móvil para gestión de inventario textil, cálculo de costos y márgenes, pedidos en tiempo real con notificaciones y facturación electrónica automática para Esmeralda Zepeda Boutique.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,90 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Prenda de ropa en el catálogo de la boutique",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "sku": { "type": "string" },
+        "category": { "type": "string" },
+        "description": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "totalCost": { "type": "number" },
+        "profitAmount": { "type": "number" },
+        "sellingPrice": { "type": "number" },
+        "totalStock": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "sku", "category", "totalCost", "sellingPrice"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Pedido de venta en boutique o tienda en línea",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "orderNumber": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "subtotal": { "type": "number" },
+        "taxAmount": { "type": "number" },
+        "total": { "type": "number" },
+        "totalCost": { "type": "number" },
+        "profit": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "orderNumber", "total", "status"]
+    },
+    "ElectronicInvoice": {
+      "title": "ElectronicInvoice",
+      "description": "Factura electrónica digital CFDI 4.0",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "invoiceNumber": { "type": "string" },
+        "uuid": { "type": "string" },
+        "orderId": { "type": "string" },
+        "orderNumber": { "type": "string" },
+        "issueDate": { "type": "string" },
+        "subtotal": { "type": "number" },
+        "taxAmount": { "type": "number" },
+        "total": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "invoiceNumber", "uuid", "total", "status"]
+    },
+    "BoutiqueProfile": {
+      "title": "BoutiqueProfile",
+      "description": "Configuración del negocio y perfil de Esmeralda Zepeda",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "ownerName": { "type": "string" },
+        "rfc": { "type": "string" },
+        "phone": { "type": "string" },
+        "whatsapp": { "type": "string" }
+      },
+      "required": ["name", "ownerName", "rfc"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Colección de prendas de vestir y catálogo"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Colección de pedidos y ventas"
+    },
+    "/invoices/{invoiceId}": {
+      "schema": "ElectronicInvoice",
+      "description": "Colección de facturas electrónicas emitidas"
+    },
+    "/profiles/{profileId}": {
+      "schema": "BoutiqueProfile",
+      "description": "Datos de la boutique y perfil de la propietaria"
+    }
+  }
+}
