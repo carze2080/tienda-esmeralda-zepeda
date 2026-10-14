@@ -9,6 +9,18 @@ const STORAGE_KEYS = {
 
 export const AVAILABLE_LOGOS = [
   {
+    id: 'esme_closet_couture',
+    name: 'Esme Closet (Silueta Rizada & Gancho de Moda)',
+    url: '/src/assets/images/esme_closet_logo_1792002111413.jpg',
+    description: 'Silueta dorada con rizos voluptuosos integrada con gancho de ropa boutique y tipografía Esme Closet.',
+  },
+  {
+    id: 'ez_textile_couture',
+    name: 'Esmeralda Zepeda (Alta Moda Textil)',
+    url: '/src/assets/images/esme_closet_logo_1792002111413.jpg',
+    description: 'Silueta estilizada con rizos verde esmeralda y oro, lazo de seda y aguja textil de alta costura.',
+  },
+  {
     id: 'aura_gold',
     name: 'AURA Silueta Dorada (Pelo Rizado & Oro)',
     url: '/src/assets/images/new_esmeralda_logo_1792000580370.jpg',
@@ -20,27 +32,21 @@ export const AVAILABLE_LOGOS = [
     url: '/src/assets/images/atelier_esmeralda_logo_1792000598373.jpg',
     description: 'Monograma entrelazado EZ con filigrana dorada y estilo parisino.',
   },
-  {
-    id: 'ez_portrait',
-    name: 'Esmeralda Clásica (Emblema Circular)',
-    url: '/src/assets/images/esmeralda_logo_1791936785380.jpg',
-    description: 'Sello circular con silueta verde esmeralda y marco dorado.',
-  },
 ];
 
 export const SUGGESTED_NAMES = [
+  'Esme Closet',
+  'Esme Closet Boutique',
+  'Esmeralda Zepeda Boutique',
   'AURA by Esmeralda Zepeda',
-  'Esmeralda Atelier Boutique',
+  'Esmeralda Atelier',
   'Zepeda Alta Costura',
-  'Émeraude Moda & Rizos',
-  'Esmeralda Zepeda Haute Couture',
-  'Rêve & Esmeralda Studio',
 ];
 
 export const DEFAULT_PROFILE: BoutiqueProfile = {
-  name: 'AURA by Esmeralda Zepeda',
+  name: 'Esme Closet',
   ownerName: 'Esmeralda Zepeda',
-  tagline: 'Alta Costura & Moda Femenina',
+  tagline: 'Boutique de Moda Femenina & Alta Confección',
   rfc: 'ZEPE910412-EZ8',
   fiscalRegime: '626 - Régimen Simplificado de Confianza (RESICO)',
   phone: '+52 33 2189 7460',
@@ -51,7 +57,7 @@ export const DEFAULT_PROFILE: BoutiqueProfile = {
   currencySymbol: '$',
   soundEnabled: true,
   vibrationEnabled: true,
-  logoUrl: '/src/assets/images/new_esmeralda_logo_1792000580370.jpg',
+  logoUrl: '/src/assets/images/esme_closet_logo_1792002111413.jpg',
   avatarUrl: '/src/assets/images/esmeralda_avatar_1791936786009.jpg',
   heroBannerUrl: '/src/assets/images/boutique_hero_1791936786205.jpg',
 };

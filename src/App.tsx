@@ -385,7 +385,30 @@ export default function App() {
       clearAllLocalBoutiqueData();
       clearAllFirestoreData().catch(console.error);
     }
+
+    // Set official Esme Closet brand name and logo
+    if (profile.name !== 'Esme Closet' || profile.logoUrl !== '/src/assets/images/esme_closet_logo_1792002111413.jpg') {
+      const updatedProfile = {
+        ...profile,
+        name: 'Esme Closet',
+        logoUrl: '/src/assets/images/esme_closet_logo_1792002111413.jpg',
+        tagline: 'Boutique de Moda Femenina & Alta Confección',
+      };
+      setProfile(updatedProfile);
+      saveStoredProfile(updatedProfile);
+      syncSaveProfile(updatedProfile).catch(console.error);
+    }
   }, []);
+
+  const handleUpdateStoreName = (newName: string) => {
+    const updated = { ...profile, name: newName };
+    setProfile(updated);
+    saveStoredProfile(updated);
+    syncSaveProfile(updated).catch(console.error);
+    if (profile.soundEnabled) {
+      playSuccessChime();
+    }
+  };
 
   return (
     <div className="min-h-screen bg-stone-100 flex flex-col font-sans text-stone-900 selection:bg-emerald-200 selection:text-emerald-950">
@@ -396,6 +419,7 @@ export default function App() {
         onOpenSettings={() => setIsSettingsOpen(true)}
         onOpenClientShop={() => setIsClientShopOpen(true)}
         onSimulateOrder={handleSimulateOrder}
+        onUpdateName={handleUpdateStoreName}
         newOrdersCount={newOrdersCount}
       />
 

@@ -135,10 +135,10 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b-2 border-emerald-800/20">
             <div className="flex items-center gap-3">
               <img
-                src="/src/assets/images/esmeralda_logo_1791936785380.jpg"
-                alt="Logo Esmeralda Zepeda"
+                src="/src/assets/images/esme_closet_logo_1792002111413.jpg"
+                alt="Logo Esme Closet"
                 referrerPolicy="no-referrer"
-                className="w-16 h-16 rounded-full border-2 border-amber-500/80 object-cover shadow-sm"
+                className="w-16 h-16 rounded-full border-2 border-amber-500/80 object-cover shadow-sm bg-white"
               />
               <div>
                 <h1 className="font-serif text-2xl font-bold tracking-tight text-emerald-950">
