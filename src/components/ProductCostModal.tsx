@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Product, CostBreakdown } from '../types';
 import { calculatePricingFromCost } from '../utils/storage';
 import { X, DollarSign, Calculator, Percent, Sparkles, Check, TrendingUp, Package, Scissors, Truck } from 'lucide-react';
+import { formatUSD } from '../utils/currency';
 
 interface ProductCostModalProps {
   product: Product | null;
@@ -274,7 +275,7 @@ export const ProductCostModal: React.FC<ProductCostModalProps> = ({
                   Costo Total
                 </span>
                 <span className="text-xs sm:text-sm font-bold text-stone-200 font-mono">
-                  ${totalCost.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
+                  {formatUSD(totalCost)}
                 </span>
               </div>
 
@@ -283,7 +284,7 @@ export const ProductCostModal: React.FC<ProductCostModalProps> = ({
                   Tu Ganancia
                 </span>
                 <span className="text-xs sm:text-sm font-bold text-emerald-400 font-mono">
-                  +${profitAmount.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
+                  +{formatUSD(profitAmount)}
                 </span>
               </div>
 
@@ -292,7 +293,7 @@ export const ProductCostModal: React.FC<ProductCostModalProps> = ({
                   Precio Venta
                 </span>
                 <span className="text-xs sm:text-sm font-extrabold text-amber-300 font-mono">
-                  ${sellingPrice.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
+                  {formatUSD(sellingPrice)}
                 </span>
               </div>
             </div>

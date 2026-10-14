@@ -4,6 +4,7 @@ import {
   TrendingUp, DollarSign, PieChart, Sparkles, Award, 
   Scissors, Package, Truck, ArrowUpRight, CheckCircle2 
 } from 'lucide-react';
+import { formatUSD } from '../utils/currency';
 
 interface FinancesViewProps {
   products: Product[];
@@ -63,7 +64,7 @@ export const FinancesView: React.FC<FinancesViewProps> = ({
                   Control Financiero de Esmeralda Zepeda
                 </h2>
                 <p className="text-xs text-stone-400">
-                  Costos reales, márgenes comerciales y utilidad neta en cada prenda vendida.
+                  Costos reales, márgenes comerciales y utilidad neta en <strong>Dólares Estadounidenses (USD)</strong>.
                 </p>
               </div>
             </div>
@@ -84,10 +85,10 @@ export const FinancesView: React.FC<FinancesViewProps> = ({
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
         <div className="bg-white p-3.5 rounded-2xl border border-stone-200 shadow-sm">
           <span className="text-[10px] font-bold text-stone-600 uppercase tracking-wider block">
-            Ingresos por Ventas
+            Ingresos por Ventas (USD)
           </span>
-          <p className="text-lg sm:text-xl font-black font-mono text-stone-900 mt-1">
-            ${totalSalesRevenue.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
+          <p className="text-base sm:text-lg font-black font-mono text-stone-900 mt-1">
+            {formatUSD(totalSalesRevenue)}
           </p>
           <span className="text-[10px] text-stone-600 mt-0.5 block">
             {orders.length} ventas procesadas
@@ -96,10 +97,10 @@ export const FinancesView: React.FC<FinancesViewProps> = ({
 
         <div className="bg-white p-3.5 rounded-2xl border border-stone-200 shadow-sm">
           <span className="text-[10px] font-bold text-stone-600 uppercase tracking-wider block">
-            Costo de lo Vendido
+            Costo de lo Vendido (USD)
           </span>
-          <p className="text-lg sm:text-xl font-bold font-mono text-stone-700 mt-1">
-            ${totalCostOfGoodsSold.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
+          <p className="text-base sm:text-lg font-bold font-mono text-stone-700 mt-1">
+            {formatUSD(totalCostOfGoodsSold)}
           </p>
           <span className="text-[10px] text-stone-600 mt-0.5 block">
             Inversión recuperada
@@ -108,10 +109,10 @@ export const FinancesView: React.FC<FinancesViewProps> = ({
 
         <div className="bg-emerald-900 text-white p-3.5 rounded-2xl border border-emerald-700 shadow-sm col-span-2 sm:col-span-1">
           <span className="text-[10px] font-bold text-emerald-200 uppercase tracking-wider block">
-            Ganancia Neta Limpia
+            Ganancia Neta Limpia (USD)
           </span>
-          <p className="text-lg sm:text-xl font-black font-mono text-amber-300 mt-1">
-            +${totalNetProfit.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
+          <p className="text-base sm:text-lg font-black font-mono text-amber-300 mt-1">
+            +{formatUSD(totalNetProfit)}
           </p>
           <span className="text-[10px] text-emerald-200/90 mt-0.5 block">
             Tu beneficio en caja
@@ -120,10 +121,10 @@ export const FinancesView: React.FC<FinancesViewProps> = ({
 
         <div className="bg-white p-3.5 rounded-2xl border border-stone-200 shadow-sm col-span-2 sm:col-span-1">
           <span className="text-[10px] font-bold text-stone-600 uppercase tracking-wider block">
-            Ticket Promedio
+            Ticket Promedio (USD)
           </span>
-          <p className="text-lg sm:text-xl font-bold font-mono text-stone-900 mt-1">
-            ${averageTicket.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
+          <p className="text-base sm:text-lg font-bold font-mono text-stone-900 mt-1">
+            {formatUSD(averageTicket)}
           </p>
           <span className="text-[10px] text-stone-600 mt-0.5 block">
             Por compra realizada
@@ -135,28 +136,28 @@ export const FinancesView: React.FC<FinancesViewProps> = ({
       <div className="bg-gradient-to-r from-stone-900 to-emerald-950 text-white rounded-2xl p-4 sm:p-5 border border-emerald-800/60 shadow-md">
         <h3 className="text-xs uppercase font-bold tracking-wider text-amber-300 flex items-center gap-1.5 mb-3">
           <Sparkles className="w-4 h-4 text-amber-400" />
-          Valor del Inventario en Tu Boutique Hoy
+          Valor del Inventario en Tu Boutique Hoy (en USD)
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="bg-stone-900/80 p-3 rounded-xl border border-stone-800">
             <span className="text-[10px] text-stone-400 block font-medium">Inversión Actual en Ropa</span>
             <span className="text-base sm:text-lg font-bold font-mono text-stone-200">
-              ${inventoryCostValue.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
+              {formatUSD(inventoryCostValue)}
             </span>
           </div>
 
           <div className="bg-stone-900/80 p-3 rounded-xl border border-stone-800">
             <span className="text-[10px] text-amber-300 block font-medium">Valor Total al Vender Todo</span>
             <span className="text-base sm:text-lg font-bold font-mono text-amber-300">
-              ${inventorySalesValue.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
+              {formatUSD(inventorySalesValue)}
             </span>
           </div>
 
           <div className="bg-emerald-900/80 p-3 rounded-xl border border-emerald-700">
             <span className="text-[10px] text-emerald-300 block font-bold">Ganancia Neta por Cobrar</span>
             <span className="text-base sm:text-lg font-black font-mono text-emerald-400">
-              +${potentialInventoryProfit.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
+              +{formatUSD(potentialInventoryProfit)}
             </span>
           </div>
         </div>

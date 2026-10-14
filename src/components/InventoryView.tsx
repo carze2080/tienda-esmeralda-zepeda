@@ -6,6 +6,7 @@ import {
   Calculator, Edit, Trash2, ArrowUpDown, Check, X,
   Tag, Layers, Sparkles
 } from 'lucide-react';
+import { formatUSD } from '../utils/currency';
 
 interface InventoryViewProps {
   products: Product[];
@@ -49,13 +50,13 @@ export const InventoryView: React.FC<InventoryViewProps> = ({
   const [formImageUrl, setFormImageUrl] = useState('');
   const [formColor, setFormColor] = useState('Verde Esmeralda');
   
-  // Cost form breakdown
-  const [costBase, setCostBase] = useState(300);
-  const [costLabor, setCostLabor] = useState(80);
-  const [costPkg, setCostPkg] = useState(30);
-  const [costShip, setCostShip] = useState(25);
-  const [costOther, setCostOther] = useState(20);
-  const [marginPct, setMarginPct] = useState(60);
+  // Cost form breakdown in USD
+  const [costBase, setCostBase] = useState(25);
+  const [costLabor, setCostLabor] = useState(10);
+  const [costPkg, setCostPkg] = useState(3);
+  const [costShip, setCostShip] = useState(4);
+  const [costOther, setCostOther] = useState(2);
+  const [marginPct, setMarginPct] = useState(65);
 
   // Variants state
   const [selectedSizes, setSelectedSizes] = useState<Record<ClothingSize, number>>({
@@ -243,8 +244,8 @@ export const InventoryView: React.FC<InventoryViewProps> = ({
             Inversión en Costo
           </span>
           <div className="flex items-baseline gap-1 mt-0.5">
-            <span className="text-xl sm:text-2xl font-bold font-mono text-stone-200">
-              ${totalCostInvested.toLocaleString('es-MX', { maximumFractionDigits: 0 })}
+            <span className="text-base sm:text-xl font-bold font-mono text-stone-200">
+              {formatUSD(totalCostInvested)}
             </span>
           </div>
           <span className="text-[10px] text-stone-500 font-medium">
@@ -257,8 +258,8 @@ export const InventoryView: React.FC<InventoryViewProps> = ({
             Valor de Venta Total
           </span>
           <div className="flex items-baseline gap-1 mt-0.5">
-            <span className="text-xl sm:text-2xl font-bold font-mono text-amber-400">
-              ${totalRetailValue.toLocaleString('es-MX', { maximumFractionDigits: 0 })}
+            <span className="text-base sm:text-xl font-bold font-mono text-amber-400">
+              {formatUSD(totalRetailValue)}
             </span>
           </div>
           <span className="text-[10px] text-stone-500 font-medium">
@@ -271,12 +272,12 @@ export const InventoryView: React.FC<InventoryViewProps> = ({
             Ganancia Neta Proyectada
           </span>
           <div className="flex items-baseline gap-1 mt-0.5">
-            <span className="text-xl sm:text-2xl font-black font-mono text-emerald-400">
-              +${totalProjectedProfit.toLocaleString('es-MX', { maximumFractionDigits: 0 })}
+            <span className="text-base sm:text-xl font-black font-mono text-emerald-400">
+              +{formatUSD(totalProjectedProfit)}
             </span>
           </div>
           <span className="text-[10px] text-emerald-200/80 font-medium">
-            Tu utilidad estimada
+            Tu utilidad estimada en USD
           </span>
         </div>
       </div>
@@ -395,21 +396,21 @@ export const InventoryView: React.FC<InventoryViewProps> = ({
                     <div className="bg-stone-100 px-2 py-1 rounded-lg text-xs font-mono">
                       <span className="text-stone-600 text-[10px]">Costo: </span>
                       <span className="font-bold text-stone-800">
-                        ${product.totalCost.toLocaleString('es-MX', { minimumFractionDigits: 0 })}
+                        {formatUSD(product.totalCost)}
                       </span>
                     </div>
 
                     <div className="bg-amber-100 text-amber-950 px-2 py-1 rounded-lg text-xs font-mono font-bold">
                       <span className="text-amber-800 text-[10px]">PVP: </span>
                       <span>
-                        ${product.sellingPrice.toLocaleString('es-MX', { minimumFractionDigits: 0 })}
+                        {formatUSD(product.sellingPrice)}
                       </span>
                     </div>
 
                     <div className="bg-emerald-100 text-emerald-900 px-2 py-1 rounded-lg text-xs font-mono font-bold">
                       <span className="text-emerald-700 text-[10px]">Ganancia: </span>
                       <span>
-                        +${product.profitAmount.toLocaleString('es-MX', { minimumFractionDigits: 0 })}
+                        +{formatUSD(product.profitAmount)}
                       </span>
                       <span className="text-[10px] text-emerald-700 font-semibold ml-1">
                         ({product.costBreakdown.marginPercentage}%)

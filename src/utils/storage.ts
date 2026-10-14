@@ -48,12 +48,12 @@ export const DEFAULT_PROFILE: BoutiqueProfile = {
   ownerName: 'Esmeralda Zepeda',
   tagline: 'Boutique de Moda Femenina & Alta Confección',
   rfc: 'ZEPE910412-EZ8',
-  fiscalRegime: '626 - Régimen Simplificado de Confianza (RESICO)',
-  phone: '+52 33 2189 7460',
-  whatsapp: '+52 33 2189 7460',
-  address: 'Av. de las Rosas 1450, Col. Chapalita, Guadalajara, Jal.',
-  taxRate: 0.16, // 16% IVA
-  currency: 'MXN',
+  fiscalRegime: 'Tax ID / Retail Sole Proprietorship (RESICO)',
+  phone: '+1 (555) 345-7890',
+  whatsapp: '+1 555 345 7890',
+  address: 'Boutique Esme Closet • Envíos a todo EE.UU. y Latinoamérica',
+  taxRate: 0.07, // 7% Sales Tax standard
+  currency: 'USD',
   currencySymbol: '$',
   soundEnabled: true,
   vibrationEnabled: true,
@@ -77,12 +77,12 @@ export function calculatePricingFromCost(breakdown: CostBreakdown): {
   const marginPct = breakdown.marginPercentage || 50;
   const profitAmount = totalCost * (marginPct / 100);
   const rawPrice = totalCost + profitAmount;
-  const sellingPrice = Math.round(rawPrice);
+  const sellingPrice = Math.round(rawPrice * 100) / 100;
 
   return {
     totalCost: Math.round(totalCost * 100) / 100,
     profitAmount: Math.round(profitAmount * 100) / 100,
-    sellingPrice,
+    sellingPrice: Math.round(sellingPrice * 100) / 100,
   };
 }
 
@@ -97,7 +97,15 @@ export function getStoredProfile(): BoutiqueProfile {
       localStorage.setItem(STORAGE_KEYS.PROFILE, JSON.stringify(DEFAULT_PROFILE));
       return DEFAULT_PROFILE;
     }
-    return { ...DEFAULT_PROFILE, ...JSON.parse(raw) };
+    const parsed = JSON.parse(raw);
+    // Auto-migrate to USD as requested
+    const migrated = { 
+      ...DEFAULT_PROFILE, 
+      ...parsed,
+      currency: 'USD',
+      currencySymbol: '$'
+    };
+    return migrated;
   } catch {
     return DEFAULT_PROFILE;
   }

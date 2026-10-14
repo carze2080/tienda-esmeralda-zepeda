@@ -222,10 +222,10 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
                       <p className="text-[10px] text-stone-500">Talla: {item.size} • Color: {item.color}</p>
                     </td>
                     <td className="p-2.5 text-right font-mono">
-                      ${item.unitPrice.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
+                      ${item.unitPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD
                     </td>
                     <td className="p-2.5 text-right font-mono font-bold text-stone-900">
-                      ${item.amount.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
+                      ${item.amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD
                     </td>
                   </tr>
                 ))}
@@ -238,22 +238,22 @@ export const InvoiceDetailModal: React.FC<InvoiceDetailModalProps> = ({
             <div className="text-xs space-y-1 sm:max-w-xs text-stone-600 bg-stone-50 p-3 rounded-lg border border-stone-200/60 w-full sm:w-auto">
               <p><span className="font-semibold text-stone-800">Método de Pago:</span> {invoice.paymentType}</p>
               <p><span className="font-semibold text-stone-800">Forma de Pago:</span> {invoice.paymentMethod}</p>
-              <p><span className="font-semibold text-stone-800">Moneda:</span> {invoice.currency} (Pesos Mexicanos)</p>
-              <p><span className="font-semibold text-stone-800">Tipo de Comprobante:</span> I - Ingreso</p>
+              <p><span className="font-semibold text-stone-800">Moneda:</span> USD (Dólares Estadounidenses)</p>
+              <p><span className="font-semibold text-stone-800">Tipo de Comprobante:</span> I - Ingreso Fiscal</p>
             </div>
 
             <div className="w-full sm:w-64 space-y-1.5 text-xs text-right">
               <div className="flex justify-between py-1 text-stone-600">
                 <span>Subtotal:</span>
-                <span className="font-mono font-medium">${invoice.subtotal.toLocaleString('es-MX', { minimumFractionDigits: 2 })}</span>
+                <span className="font-mono font-medium">${invoice.subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD</span>
               </div>
               <div className="flex justify-between py-1 text-stone-600">
-                <span>IVA Trasladado (16%):</span>
-                <span className="font-mono font-medium">${invoice.taxAmount.toLocaleString('es-MX', { minimumFractionDigits: 2 })}</span>
+                <span>Impuesto / Tax ({Math.round(invoice.taxRate * 100)}%):</span>
+                <span className="font-mono font-medium">${invoice.taxAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD</span>
               </div>
               <div className="flex justify-between py-2 border-t-2 border-stone-800 text-base font-bold text-emerald-950">
                 <span>Total:</span>
-                <span className="font-mono text-emerald-900">${invoice.total.toLocaleString('es-MX', { minimumFractionDigits: 2 })} {invoice.currency}</span>
+                <span className="font-mono text-emerald-900">${invoice.total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD</span>
               </div>
             </div>
           </div>

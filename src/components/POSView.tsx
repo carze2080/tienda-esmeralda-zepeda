@@ -5,6 +5,7 @@ import {
   CreditCard, Banknote, ArrowRight, User, Phone, FileText,
   DollarSign, Sparkles, X, ChevronRight, ShieldCheck, Mail
 } from 'lucide-react';
+import { formatUSD } from '../utils/currency';
 
 interface CartItem extends OrderItem {
   maxStock: number;
@@ -241,10 +242,10 @@ export const POSView: React.FC<POSViewProps> = ({
                   </h4>
                   <div className="flex items-baseline gap-1 mt-1">
                     <span className="text-sm font-extrabold font-mono text-emerald-950">
-                      ${product.sellingPrice.toLocaleString('es-MX', { minimumFractionDigits: 0 })}
+                      {formatUSD(product.sellingPrice)}
                     </span>
                     <span className="text-[10px] text-emerald-700 font-medium">
-                      (+${product.profitAmount} ganancia)
+                      (+{formatUSD(product.profitAmount)} ganancia)
                     </span>
                   </div>
                 </div>
@@ -291,14 +292,14 @@ export const POSView: React.FC<POSViewProps> = ({
                   {totalItemsCount} {totalItemsCount === 1 ? 'prenda' : 'prendas'} en pedido
                 </p>
                 <p className="text-[11px] text-emerald-300">
-                  Ganancia: +${cartNetProfit.toLocaleString('es-MX', { minimumFractionDigits: 0 })}
+                  Ganancia: +{formatUSD(cartNetProfit)}
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
               <span className="text-base font-black font-mono text-amber-300">
-                ${cartTotal.toLocaleString('es-MX', { minimumFractionDigits: 0 })}
+                {formatUSD(cartTotal)}
               </span>
               <ChevronRight className="w-5 h-5 text-amber-400" />
             </div>
@@ -393,7 +394,7 @@ export const POSView: React.FC<POSViewProps> = ({
                           Talla: <span className="font-bold text-stone-700">{item.size}</span> • {item.color}
                         </p>
                         <p className="text-xs font-mono font-bold text-emerald-900 mt-0.5">
-                          ${item.unitPrice.toLocaleString('es-MX', { minimumFractionDigits: 0 })} c/u
+                          {formatUSD(item.unitPrice)} c/u
                         </p>
                       </div>
 

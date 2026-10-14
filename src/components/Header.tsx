@@ -70,13 +70,18 @@ export const Header: React.FC<HeaderProps> = ({
 
               <span className="hidden md:inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider bg-emerald-950/90 text-emerald-300 border border-emerald-500/40 px-1.5 py-0.5 rounded-full">
                 <Cloud className="w-2.5 h-2.5 text-emerald-400" />
-                Firebase Conectado
+                Cloud Firestore
+              </span>
+
+              <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-400/40 px-1.5 py-0.5 rounded-full">
+                💵 USD $
               </span>
             </div>
             <p className="text-[10px] sm:text-xs text-stone-300 flex items-center gap-1 truncate font-medium">
-              <span className="text-emerald-400 font-semibold">{profile.ownerName}</span>
+              <span className="text-amber-400 font-bold">👑 Portal de la Dueña:</span>
+              <span className="text-stone-200 font-semibold">{profile.ownerName}</span>
               <span className="hidden xs:inline text-stone-500">•</span>
-              <span className="hidden xs:inline text-amber-300/80 text-[10px]">Pelo Rizado & Alta Moda</span>
+              <span className="hidden xs:inline text-amber-300/80 text-[10px]">Pelo Rizado & Alta Confección</span>
             </p>
           </div>
         </div>
@@ -103,29 +108,28 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Quick Simulation Button (Demo Instant Notification) */}
           <button
             onClick={onSimulateOrder}
-            title="Simular un pedido entrante de cliente para probar notificación al instante"
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-stone-950 font-bold text-[11px] sm:text-xs shadow-sm transition active:scale-95 cursor-pointer"
+            title="Simular un pedido entrante de cliente en USD para probar notificación al instante"
+            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-stone-950 font-bold text-[11px] sm:text-xs shadow-sm transition active:scale-95 cursor-pointer"
           >
             <Sparkles className="w-3.5 h-3.5 text-stone-950 shrink-0" />
-            <span className="hidden sm:inline">Simular Pedido</span>
-            <span className="sm:hidden">Simular</span>
+            <span>Simular Pedido</span>
           </button>
 
-          {/* Client Store Link / View */}
+          {/* Client Portal Switcher Button */}
           <button
             onClick={onOpenClientShop}
-            title="Ver catálogo interactivo como cliente para recibir pedidos reales"
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-medium text-[11px] sm:text-xs shadow-sm transition active:scale-95 cursor-pointer border border-emerald-500/30"
+            title="Ver y abrir el Portal de Clientes (Tienda Online) para clientas"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold text-[11px] sm:text-xs shadow-md transition active:scale-95 cursor-pointer border border-emerald-400/40"
           >
-            <Store className="w-3.5 h-3.5 text-emerald-200 shrink-0" />
-            <span className="hidden sm:inline">Tienda Cliente</span>
-            <span className="sm:hidden">Tienda</span>
+            <Store className="w-3.5 h-3.5 text-amber-300 shrink-0" />
+            <span className="hidden sm:inline">🛍️ Portal de Clientes</span>
+            <span className="sm:hidden">Tienda Clientes</span>
           </button>
 
           {/* Settings Modal Button */}
           <button
             onClick={onOpenSettings}
-            title="Configuración de negocio, logos y perfil"
+            title="Configuración de negocio, logos, moneda USD y respaldo"
             className="p-2 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 transition active:scale-95 cursor-pointer"
           >
             <Settings className="w-4 h-4" />
